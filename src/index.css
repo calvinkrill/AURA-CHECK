@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-matcha: #dcfce7;
+  --color-strawberry: #ffe4e6;
+  --color-blueberry: #dbeafe;
+  --color-lemon: #fef9c3;
+  --color-lavender: #f5f3ff;
+  --color-ink: #1a1a1a;
+  --color-neon-pink: #ff007f;
+  --color-neon-blue: #00f2ff;
+}
+
+@layer base {
+  body {
+    @apply bg-[#fafaf9] text-ink font-sans antialiased overflow-x-hidden p-0 m-0;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-sans font-black tracking-tighter;
+  }
+}
+
+.pixel-grid {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(32, 1fr);
+  width: 320px;
+  height: 512px;
+  background: white;
+  border: 4px solid #1a1a1a;
+  box-shadow: 8px 8px 0px 0px rgba(26,26,26,1);
+}
+
+.pixel-cell {
+  width: 100%;
+  height: 100%;
+}
+
+/* Gen Z 'Soft Brutalist' Components */
+
+.brutal-card {
+  @apply bg-white border-3 border-ink shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] rounded-2xl transition-all;
+}
+
+.brutal-card:hover {
+  @apply shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] -translate-x-0.5 -translate-y-0.5;
+}
+
+.brutal-button {
+  @apply px-8 py-4 bg-ink text-white font-bold rounded-xl border-2 border-ink shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1 active:scale-95;
+}
+
+.sticker {
+  @apply absolute pointer-events-none select-none text-4xl sm:text-5xl z-0 opacity-80;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.vibe-pill {
+  @apply px-4 py-1 rounded-full border-2 border-ink text-xs font-bold uppercase tracking-wider bg-white;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-20px) rotate(calc(var(--rot, 0deg) + 5deg)); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+  }
+}
